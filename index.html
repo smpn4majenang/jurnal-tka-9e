@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jurnal TKA Kelas 9B</title>
+    <title>Jurnal TKA Kelas 9E</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -75,7 +75,7 @@
                 <i class="fas fa-chalkboard text-9xl absolute -right-10 -bottom-10 text-white"></i>
                 <i class="fas fa-book-reader text-8xl absolute -left-10 -top-10 text-white"></i>
             </div>
-            <h2 class="text-3xl font-extrabold text-white relative z-10 tracking-wide drop-shadow-md">Jurnal TKA Kelas 9B</h2>
+            <h2 class="text-3xl font-extrabold text-white relative z-10 tracking-wide drop-shadow-md">Jurnal TKA Kelas 9E</h2>
             <p class="text-green-100 text-base mt-2 relative z-10 font-medium">SMP Negeri 4 Majenang</p>
         </div>
 
@@ -164,7 +164,7 @@
                 <!-- Absensi -->
                 <div class="mb-10 p-6 bg-red-50 rounded-2xl border border-red-100 shadow-inner">
                     <label class="form-label-custom !text-red-700 !text-xl mb-4 flex justify-between items-center border-b border-red-200 pb-2">
-                        <span><i class="fas fa-user-times mr-2"></i>Absensi (Siswa Tidak Hadir)</span>
+                        <span><i class="fas fa-user-times mr-2"></i>Absensi</span>
                         <button type="button" id="btnAddSiswa" onclick="addAbsensiRow()" class="text-sm bg-red-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-red-700 transition-all shadow-md disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-lg transform active:scale-95" disabled>
                             <i class="fas fa-plus mr-1"></i> Tambah
                         </button>
@@ -175,7 +175,7 @@
                             <span id="pilihKelasFirstMsg">Mohon pilih <b>Kelas</b> terlebih dahulu.</span>
                         </div>
                     </div>
-                    <input type="hidden" name="Absensi" id="finalAbsensi" value="Hadir Semua">
+                    <input type="hidden" name="Absensi" id="finalAbsensi" value="-">
                 </div>
 
                 <!-- Buttons -->
@@ -225,7 +225,7 @@
         const SHEET_NAME_DATA = 'Data';  
         const SHEET_NAME_SISWA = 'Kelas'; 
 
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbxBthGA55cQWTU1kChukZEN3iy-Ig-ye7NowzWYT9KcjTsQHn7XibKq_gg0a_F7gIW2/exec'; 
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwnWCnlmMi2f7hVYg6HUHudFln0uB17H9v-ID7VgV3vYjaz2JmCiVJSvJssnHkqP2ze/exec'; 
 
         let allStudentsData = []; 
         let currentClassStudents = [];
@@ -382,7 +382,7 @@
 
             container.innerHTML = ''; 
             if (currentClassStudents.length > 0) {
-                container.innerHTML = '<div class="text-base text-slate-500 italic text-center py-4 bg-white/50 rounded-lg border border-dashed border-slate-300" id="emptyState">Tidak ada siswa yang absen (Hadir Semua)</div>';
+                container.innerHTML = '<div class="text-base text-slate-500 italic text-center py-4 bg-white/50 rounded-lg border border-dashed border-slate-300" id="emptyState">Tidak ada siswa yang absen</div>';
                 btnAddSiswa.disabled = false;
             } else {
                 container.innerHTML = `<div class="text-base text-red-500 italic text-center py-4 bg-white/50 rounded-lg border border-dashed border-red-300" id="emptyState">Data siswa kelas <b>${selectedClass}</b> tidak ditemukan.</div>`;
@@ -449,7 +449,7 @@
                     absensiData.push(`${namaSelect.value} (${ketSelect.value})`);
                 }
             });
-            document.getElementById('finalAbsensi').value = absensiData.length > 0 ? absensiData.join(", ") : "Hadir Semua";
+            document.getElementById('finalAbsensi').value = absensiData.length > 0 ? absensiData.join(", ") : "-";
 
             btnSubmit.classList.add('hidden');
             btnLoading.classList.remove('hidden');
